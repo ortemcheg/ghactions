@@ -7,6 +7,8 @@ on:
 jobs:
   MyFirstJob:
     runs-on: ubuntu-latest
+    env:
+      HELLO: "WORLD"
 
     steps:
       - run: echo "Hi there!😻"
@@ -21,5 +23,5 @@ jobs:
 
       - name: List files in the repository
         run: |
-          echo "The repository ${{ github.repository }} contains the following files"
+          echo "${{ env.HELLO }}The repository ${{ github.repository }} contains the following files"
           tree

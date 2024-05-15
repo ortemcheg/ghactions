@@ -12,7 +12,9 @@ jobs:
       - run: echo "Hi there!😻"
 
       - name: echo "Which is node?"
-        run: which node
+        run: |
+          which node
+          node --version
 
       - name: Checkout
         uses: actions/checkout@v4.1.4

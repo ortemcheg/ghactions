@@ -1,5 +1,8 @@
 name: Stupid Workflow
 
+env:
+  PROD: false
+
 on:
   push:
     branches:
@@ -7,8 +10,6 @@ on:
 jobs:
   MyFirstJob:
     runs-on: ubuntu-latest
-    env:
-      HELLO: "WORLD"
 
     steps:
       - run: echo "Hi there!😻"
@@ -17,11 +18,13 @@ jobs:
         run: |
           which node
           node --version
+      - name: "This should fail. Let's see if the next steps will be taken"
+        run: gibberish -v
 
       - name: Checkout
         uses: actions/checkout@v4.1.4
 
       - name: List files in the repository
         run: |
-          echo "${{ env.HELLO }}The repository ${{ github.repository }} contains the following files"
+          echo "${{ env.PROD }}The repository ${{ github.repository }} contains the following files"
           tree

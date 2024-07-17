@@ -1,30 +1,7 @@
-name: Stupid Workflow
-
-env:
-  PROD: false
-
-on:
-  push:
-    branches:
-      - main
+name: hello-world
+on: [push]
 jobs:
-  MyFirstJob:
+  test-job:
     runs-on: ubuntu-latest
-
     steps:
-      - run: echo "Hi there!😻"
-
-      - name: echo "Which is node?"
-        run: |
-          which node
-          node --version
-      - name: "This should fail. Let's see if the next steps will be taken"
-        run: gibberish -v
-
-      - name: Checkout
-        uses: actions/checkout@v4.1.4
-
-      - name: List files in the repository
-        run: |
-          echo "${{ env.PROD }}The repository ${{ github.repository }} contains the following files"
-          tree
+      - run: echo "Hello, world"
